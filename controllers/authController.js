@@ -127,7 +127,6 @@ export const loginWithGoogle = async (req, res, next) => {
       secure: true, 
       sameSite: "none"
     });
-
     mongooseSession.commitTransaction();
     res.status(201).json({ message: "account created and logged in" });
   } catch (err) {
