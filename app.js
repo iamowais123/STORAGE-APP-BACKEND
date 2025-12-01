@@ -23,9 +23,6 @@ app.use(
   })
 );
 
-app.get("/",(req,res) => {
-  res.send("hello");
-})
 
 app.use("/directory", checkAuth, directoryRoutes);
 app.use("/file", checkAuth, fileRoutes);
