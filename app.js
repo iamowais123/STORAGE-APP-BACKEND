@@ -9,7 +9,6 @@ import checkAuth from "./middlewares/authMiddleware.js";
 import { connectDB } from "./config/db.js";
 import webhookRoutes from "./routes/webhookRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js"
-await connectDB();
 
 const PORT = process.env.PORT || 4000;
 
@@ -36,11 +35,14 @@ app.use("/auth", authRoutes);
 
 app.use((err, req, res, next) => {
   console.log(err);
-  // res.status(err.status || 500).json({ error: "Something went wrong!" });
   res.json(err);
 });
 
 app.listen(PORT, () => {
   console.log(`Server Started on port ${PORT}`);
+   // CONNECT TO MONGO AFTER SERVER STARTS
+  connectDB().catch((err) => {
+    console.log("MongoDB connection failed:", err.message);
+  });
 });
 
