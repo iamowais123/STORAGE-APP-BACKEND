@@ -124,6 +124,8 @@ export const loginWithGoogle = async (req, res, next) => {
       httpOnly: true,
       signed: true,
       maxAge: sessionExpiryTime,
+      secure: true, 
+      sameSite: "none"
     });
 
     mongooseSession.commitTransaction();
