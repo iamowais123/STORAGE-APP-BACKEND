@@ -76,6 +76,8 @@ export const loginWithGoogle = async (req, res, next) => {
       httpOnly: true,
       signed: true,
       maxAge: sessionExpiryTime,
+      secure: true, 
+      sameSite: "none"
     });
 
     return res.json({ message: "logged in" });
