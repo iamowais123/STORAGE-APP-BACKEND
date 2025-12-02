@@ -31,6 +31,10 @@ app.use("/webhooks", webhookRoutes);
 app.use("/", userRoutes);
 app.use("/auth", authRoutes);
 
+app.get("/",(req,res) => {
+  res.json({message : "Hello from storage App"});
+})
+
 app.use((err, req, res, next) => {
   console.log(err);
   res.json(err);
